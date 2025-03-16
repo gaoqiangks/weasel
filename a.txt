@@ -1,0 +1,300 @@
+PRODUCT_VERSION=0.16.3.0
+WEASEL_VERSION=0.16.3
+WEASEL_BUILD=0
+WEASEL_ROOT=C:\Users\gaoqiang\Documents\GitHub\weasel
+WEASEL_BUNDLED_RECIPES=
+
+BOOST_ROOT=C:\Users\gaoqiang\Documents\GitHub\boost_1_87_0\boost_1_87_0
+
+Microsoft (R) Windows Script Host Version 5.812
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+BOOST_ROOT=C:\Users\gaoqiang\Documents\GitHub\boost_1_87_0\boost_1_87_0
+PLATFORM_TOOLSET=v142
+VERSION_MAJOR=0
+VERSION_MINOR=16
+VERSION_PATCH=3
+PRODUCT_VERSION=0.16.3.0
+FILE_VERSION=0.16.3.0
+Generated weasel.props
+用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+在此解决方案中一次生成一个项目。若要启用并行生成，请添加“-m”开关。
+生成启动时间为 16/3/2025 下午 6:15:55。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”在节点 1 上(Build 个目标)。
+ValidateSolutionConfiguration:
+  正在生成解决方案配置“Release|x64”。
+ValidateProjects:
+  在解决方案配置“Release|x64”中未选定生成项目“TestWeaselIPC”。
+  在解决方案配置“Release|x64”中未选定生成项目“TestResponseParser”。
+  在解决方案配置“Release|x64”中未选定生成项目“WeaselSetup”。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(2) (默认目标)。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(2)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPC\WeaselIPC.vcxproj”(3) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPC\WeaselIPC.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  WeaselIPC.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPC.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPC\WeaselIPC.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPC\WeaselIPC.tlog\WeaselIPC.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPC\WeaselIPC.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(2)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselUI\WeaselUI.vcxproj”(4) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselUI\WeaselUI.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  WeaselUI.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselUI.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselUI\WeaselUI.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselUI\WeaselUI.tlog\WeaselUI.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselUI\WeaselUI.vcxproj”(默认目标)的操作。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselTSF\WeaselTSF.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselTSF.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\weaselx64.dll
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselTSF\WeaselTSF.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselTSF\WeaselTSF.tlog\WeaselTSF.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIME\WeaselIME.vcxproj”(5) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIME\WeaselIME.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselIME.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\weaselx64.ime
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIME\WeaselIME.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIME\WeaselIME.tlog\WeaselIME.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIME\WeaselIME.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(6) (默认目标)。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(6)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\RimeWithWeasel\RimeWithWeasel.vcxproj”(7) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\RimeWithWeasel\RimeWithWeasel.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  RimeWithWeasel.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\RimeWithWeasel.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\RimeWithWeasel\RimeWithWeasel.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\RimeWithWeasel\RimeWithWeasel.tlog\RimeWithWeasel.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\RimeWithWeasel\RimeWithWeasel.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(6)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPCServer\WeaselIPCServer.vcxproj”(8) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPCServer\WeaselIPCServer.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  WeaselIPCServer.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPCServer.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPCServer\WeaselIPCServer.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselIPCServer\WeaselIPCServer.tlog\WeaselIPCServer.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPCServer\WeaselIPCServer.vcxproj”(默认目标)的操作。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselServer\WeaselServer.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselServer.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\WeaselServer.exe
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselServer\WeaselServer.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselServer\WeaselServer.tlog\WeaselServer.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselDeployer\WeaselDeployer.vcxproj”(9) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselDeployer\WeaselDeployer.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselDeployer.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\WeaselDeployer.exe
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselDeployer\WeaselDeployer.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\x64\WeaselDeployer\WeaselDeployer.tlog\WeaselDeployer.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselDeployer\WeaselDeployer.vcxproj”(默认目标)的操作。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(Build 个目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:03.02
+用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+在此解决方案中一次生成一个项目。若要启用并行生成，请添加“-m”开关。
+生成启动时间为 16/3/2025 下午 6:15:58。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”在节点 1 上(Build 个目标)。
+ValidateSolutionConfiguration:
+  正在生成解决方案配置“Release|Win32”。
+ValidateProjects:
+  在解决方案配置“Release|Win32”中未选定生成项目“TestWeaselIPC”。
+  在解决方案配置“Release|Win32”中未选定生成项目“TestResponseParser”。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(2) (默认目标)。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(2)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPC\WeaselIPC.vcxproj”(3) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPC\WeaselIPC.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  WeaselIPC.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPC.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPC\WeaselIPC.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPC\WeaselIPC.tlog\WeaselIPC.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPC\WeaselIPC.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(2)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselUI\WeaselUI.vcxproj”(4) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselUI\WeaselUI.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  WeaselUI.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselUI.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselUI\WeaselUI.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselUI\WeaselUI.tlog\WeaselUI.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselUI\WeaselUI.vcxproj”(默认目标)的操作。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselTSF\WeaselTSF.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselTSF.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\weasel.dll
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselTSF\WeaselTSF.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselTSF\WeaselTSF.tlog\WeaselTSF.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselTSF\WeaselTSF.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIME\WeaselIME.vcxproj”(5) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIME\WeaselIME.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselIME.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\weasel.ime
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIME\WeaselIME.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIME\WeaselIME.tlog\WeaselIME.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIME\WeaselIME.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(6) (默认目标)。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(6)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\RimeWithWeasel\RimeWithWeasel.vcxproj”(7) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\RimeWithWeasel\RimeWithWeasel.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  RimeWithWeasel.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\RimeWithWeasel.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\RimeWithWeasel\RimeWithWeasel.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\RimeWithWeasel\RimeWithWeasel.tlog\RimeWithWeasel.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\RimeWithWeasel\RimeWithWeasel.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(6)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPCServer\WeaselIPCServer.vcxproj”(8) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPCServer\WeaselIPCServer.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+Lib:
+  所有输出均为最新。
+  WeaselIPCServer.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPCServer.lib
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPCServer\WeaselIPCServer.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselIPCServer\WeaselIPCServer.tlog\WeaselIPCServer.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselIPCServer\WeaselIPCServer.vcxproj”(默认目标)的操作。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselServer\WeaselServer.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselServer.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\Win32\WeaselServer.exe
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselServer\WeaselServer.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselServer\WeaselServer.tlog\WeaselServer.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselServer\WeaselServer.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselDeployer\WeaselDeployer.vcxproj”(9) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselDeployer\WeaselDeployer.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselDeployer.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\Win32\WeaselDeployer.exe
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselDeployer\WeaselDeployer.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselDeployer\WeaselDeployer.tlog\WeaselDeployer.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselDeployer\WeaselDeployer.vcxproj”(默认目标)的操作。
+项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(1)正在节点 1 上生成“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselSetup\WeaselSetup.vcxproj”(10) (默认目标)。
+InitializeBuildStatus:
+  正在创建“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselSetup\WeaselSetup.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  所有输出均为最新。
+  所有输出均为最新。
+ResourceCompile:
+  所有输出均为最新。
+Link:
+  所有输出均为最新。
+  WeaselSetup.vcxproj -> C:\Users\gaoqiang\Documents\GitHub\weasel\output\WeaselSetup.exe
+FinalizeBuildStatus:
+  正在删除文件“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselSetup\WeaselSetup.tlog\unsuccessfulbuild”。
+  正在对“C:\Users\gaoqiang\Documents\GitHub\weasel\msbuild\Release\Win32\WeaselSetup\WeaselSetup.tlog\WeaselSetup.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\WeaselSetup\WeaselSetup.vcxproj”(默认目标)的操作。
+已完成生成项目“C:\Users\gaoqiang\Documents\GitHub\weasel\weasel.sln”(Build 个目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:02.98
+error building weasel...

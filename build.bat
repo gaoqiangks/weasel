@@ -112,7 +112,7 @@ rem parse the command line options
     set build_rime=1
     set build_weasel=1
     set build_installer=1
-    set build_arm64=1
+    set build_arm64=0
   )
   shift
   goto parse_cmdline_options

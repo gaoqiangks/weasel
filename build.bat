@@ -9,8 +9,8 @@ if exist env.bat call env.bat
 if not defined WEASEL_ROOT set WEASEL_ROOT=%CD%
 
 if not defined VERSION_MAJOR set VERSION_MAJOR=0
-if not defined VERSION_MINOR set VERSION_MINOR=16
-if not defined VERSION_PATCH set VERSION_PATCH=3
+if not defined VERSION_MINOR set VERSION_MINOR=17
+if not defined VERSION_PATCH set VERSION_PATCH=4
 
 if not defined WEASEL_VERSION set WEASEL_VERSION=%VERSION_MAJOR%.%VERSION_MINOR%.%VERSION_PATCH%
 if not defined WEASEL_BUILD set WEASEL_BUILD=0
@@ -196,17 +196,20 @@ cscript.exe render.js weasel.props %WEASEL_PROJECT_PROPERTIES%
 
 del msbuild*.log
 
+if defined SDKVER set build_sdk_option=/p:WindowsTargetPlatformVersion=%SDKVER%
+if not defined SDKVER set build_sdk_option=
+
 if %build_arm64% == 1 (
 
-  msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="ARM" /fl6
+  msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="ARM" /fl6 %build_sdk_option%
   if errorlevel 1 goto error
-  msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="ARM64" /fl5
+  msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="ARM64" /fl5 %build_sdk_option%
   if errorlevel 1 goto error
 )
 
-msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="x64" /fl2
+msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="x64" /fl2 %build_sdk_option%
 if errorlevel 1 goto error
-msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="Win32" /fl1
+msbuild.exe weasel.sln %build_option% /p:Configuration=%build_config% /p:Platform="Win32" /fl1 %build_sdk_option%
 if errorlevel 1 goto error
 
 if %build_arm64% == 1 (
@@ -370,7 +373,9 @@ rem ---------------------------------------------------------------------------
 
 :error
 
+cd %WEASEL_ROOT%
 echo error building weasel...
+exit /b 1
 
 :end
 cd %WEASEL_ROOT%

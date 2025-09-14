@@ -4,8 +4,6 @@
 #include <StringAlgorithm.hpp>
 #include <WeaselConstants.h>
 #include <WeaselUtility.h>
-#include <boost/algorithm/string.hpp>
-#include <vector>
 
 #include <filesystem>
 #include <map>
@@ -39,40 +37,6 @@ WeaselSessionId _GenerateNewWeaselSessionId(SessionStatusMap sm, DWORD pid) {
 
 int expand_ibus_modifier(int m) {
   return (m & 0xff) | ((m & 0xff00) << 16);
-}
-
-static void CleanOldLogs() {
-  char ymd[12] = {0};
-  time_t now = time(NULL);
-  strftime(ymd, sizeof(ymd), ".%Y%m%d", localtime(&now));
-  std::string today(ymd);
-  const std::string app_name = "rime.weasel";
-  std::string dir = WeaselLogPath().string();
-  if (!fs::exists(fs::path(dir)))
-    return;
-  std::vector<fs::path> files;
-  try {
-    // preparing files
-    for (const auto& entry : fs::directory_iterator(dir)) {
-      const std::string& file_name(entry.path().filename().string());
-      if (entry.is_regular_file() && !entry.is_symlink() &&
-          boost::starts_with(file_name, app_name) &&
-          boost::ends_with(file_name, ".log") &&
-          !boost::contains(file_name, today)) {
-        files.push_back(entry.path());
-      }
-    }
-  } catch (const fs::filesystem_error&) {
-  }
-  // remove files
-  for (const auto& file : files) {
-    try {
-      // ensure write permission
-      fs::permissions(file, fs::perms::owner_write);
-      fs::remove(file);
-    } catch (const fs::filesystem_error&) {
-    }
-  }
 }
 
 RimeWithWeaselHandler::RimeWithWeaselHandler(UI* ui)
@@ -113,10 +77,10 @@ void _LoadAppOptions(RimeConfig* config, AppOptionsByAppName& app_options);
 void _RefreshTrayIcon(const RimeSessionId session_id,
                       const std::function<void()> _UpdateUICallback) {
   // Dangerous, don't touch
-  static char app_name[50];
-  rime_api->get_property(session_id, "client_app", app_name,
-                         sizeof(app_name) - 1);
-  if (u8tow(app_name) == std::wstring(L"explorer.exe"))
+  static char app_name[256] = {0};
+  auto ret = rime_api->get_property(session_id, "client_app", app_name,
+                                    sizeof(app_name) - 1);
+  if (!ret || u8tow(app_name) == std::wstring(L"explorer.exe"))
     boost::thread th([=]() {
       ::Sleep(100);
       if (_UpdateUICallback)
@@ -152,12 +116,9 @@ void RimeWithWeaselHandler::Initialize() {
 
   LOG(INFO) << "Initializing la rime.";
   rime_api->initialize(NULL);
-#if 0
   if (rime_api->start_maintenance(/*full_check = */ False)) {
     m_disabled = true;
   }
-#endif
-  CleanOldLogs();
 
   RimeConfig config = {NULL};
   if (rime_api->config_open("weasel", &config)) {
@@ -269,15 +230,6 @@ DWORD RimeWithWeaselHandler::RemoveSession(WeaselSessionId ipc_id) {
   return 0;
 }
 
-namespace ibus {
-enum Keycode {
-  Escape = 0xFF1B,
-  XK_bracketleft = 0x005b, /* U+005B LEFT SQUARE BRACKET */
-  XK_c = 0x0063,           /* U+0063 LATIN SMALL LETTER C */
-  XK_C = 0x0043,           /* U+0043 LATIN CAPITAL LETTER C */
-};
-}
-
 void RimeWithWeaselHandler::UpdateColorTheme(BOOL darkMode) {
   RimeConfig config = {NULL};
   if (rime_api->config_open("weasel", &config)) {
@@ -322,7 +274,8 @@ BOOL RimeWithWeaselHandler::ProcessKeyEvent(KeyEvent keyEvent,
   RimeSessionId session_id = to_session_id(ipc_id);
   Bool handled = rime_api->process_key(session_id, keyEvent.keycode,
                                        expand_ibus_modifier(keyEvent.mask));
-  if (!handled) {
+  // vim_mode when keydown only
+  if (!handled && !(keyEvent.mask & ibus::Modifier::RELEASE_MASK)) {
     bool isVimBackInCommandMode =
         (keyEvent.keycode == ibus::Keycode::Escape) ||
         ((keyEvent.mask & (1 << 2)) &&
@@ -1041,7 +994,8 @@ static Bool _RimeGetColor(RimeConfig* config,
     if (!rime_api->config_get_int(config, key.c_str(), &tmp)) {
       value = fallback;
       return False;
-    }
+    } else
+      value = tmp;
     make_opaque(value);
   }
   value = ConvertColorToAbgr(value, fmt);
@@ -1385,7 +1339,8 @@ static bool _UpdateUIStyleColor(RimeConfig* config,
     COLOR("label_color", style.label_text_color,
           blend_colors(style.candidate_text_color, style.candidate_back_color));
     COLOR("hilited_label_color", style.hilited_label_text_color,
-          blend_colors(style.candidate_text_color, style.candidate_back_color));
+          blend_colors(style.hilited_candidate_text_color,
+                       style.hilited_candidate_back_color));
     COLOR("comment_text_color", style.comment_text_color,
           style.label_text_color);
     COLOR("hilited_comment_text_color", style.hilited_comment_text_color,

@@ -3,6 +3,7 @@
 #include <WeaselUI.h>
 #include <map>
 #include <string>
+#include <mutex>
 
 #include <rime_api.h>
 
@@ -82,7 +83,6 @@ class RimeWithWeaselHandler : public weasel::RequestHandler {
   void _GetContext(weasel::Context& ctx, RimeSessionId session_id);
   void _UpdateShowNotifications(RimeConfig* config, bool initialize = false);
 
-  bool _IsSessionTSF(RimeSessionId session_id);
   void _UpdateInlinePreeditStatus(WeaselSessionId ipc_id);
 
   RimeSessionId to_session_id(WeaselSessionId ipc_id) {
@@ -114,6 +114,7 @@ class RimeWithWeaselHandler : public weasel::RequestHandler {
   static std::string m_message_value;
   static std::string m_message_label;
   static std::string m_option_name;
+  static std::mutex m_notifier_mutex;
   SessionStatusMap m_session_status_map;
   bool m_current_dark_mode;
   bool m_global_ascii_mode;

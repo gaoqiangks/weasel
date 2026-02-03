@@ -36,7 +36,7 @@ jobs:
 
   build:
     needs: lint
-    runs-on: windows-latest
+    runs-on: windows-2022
     env:
       boost_version: 1.84.0
       BOOST_ROOT: ${{ github.workspace }}\deps\boost_1_84_0
@@ -113,7 +113,7 @@ jobs:
 
   xbuild:
     needs: lint
-    runs-on: windows-latest
+    runs-on: windows-2022
     env:
       boost_version: 1.84.0
       BOOST_ROOT: ${{ github.workspace }}\deps\boost_1_84_0
@@ -153,7 +153,6 @@ jobs:
       - uses: xmake-io/github-action-setup-xmake@v1
         with:
           xmake-version: '2.9.4'
-          actions-cache-folder: '.xmake-cache'
 
       - uses: ilammy/msvc-dev-cmd@v1
         with:

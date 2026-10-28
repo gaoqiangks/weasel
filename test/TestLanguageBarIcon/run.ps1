@@ -32,9 +32,9 @@ if errorlevel 1 exit /b %errorlevel%
 cd /d "$PSScriptRoot"
 rc /nologo /fo "$resource" TestLanguageBarIcon.rc
 if errorlevel 1 exit /b %errorlevel%
-cl /nologo /EHsc /std:c++17 /W4 /WX /DUNICODE /D_UNICODE /Fo"$object" /Fe"$executable" TestLanguageBarIcon.cpp "$resource" /link /INCREMENTAL:NO user32.lib gdi32.lib
+cl /nologo /EHsc /std:c++17 /W4 /WX /DUNICODE /D_UNICODE /Fo"$object" /Fe"$executable" TestLanguageBarIcon.cpp "$resource" /link /INCREMENTAL:NO user32.lib gdi32.lib advapi32.lib
 if errorlevel 1 exit /b %errorlevel%
-"$executable" "$zhIcon" "$enIcon"
+"$executable" "$zhIcon" "$enIcon" "$artifacts\theme-preview.bmp"
 exit /b %errorlevel%
 "@
   [IO.File]::WriteAllText($batch, $commands, [Text.UTF8Encoding]::new($false))

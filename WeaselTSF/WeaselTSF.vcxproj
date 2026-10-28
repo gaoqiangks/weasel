@@ -488,6 +488,7 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="LanguageBar.h" />
     <ClInclude Include="LanguageBarIcon.h" />
+    <ClInclude Include="LanguageBarThemeObserver.h" />
     <ClInclude Include="Register.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />

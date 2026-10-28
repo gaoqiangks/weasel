@@ -1,6 +1,7 @@
 #pragma once
 #include <msctf.h>
 #include <WeaselUI.h>
+#include "LanguageBarThemeObserver.h"
 
 class CLangBarItemButton : public ITfLangBarItemButton, public ITfSource {
  public:
@@ -36,6 +37,8 @@ class CLangBarItemButton : public ITfLangBarItemButton, public ITfSource {
   void SetLangbarStatus(DWORD dwStatus, BOOL fSet);
 
  private:
+  static void OnSystemAppearanceChanged(void* context);
+
   GUID _guid;
   com_ptr<WeaselTSF> _pTextService;
   com_ptr<ITfLangBarItemSink> _pLangBarItemSink;
@@ -45,4 +48,5 @@ class CLangBarItemButton : public ITfLangBarItemButton, public ITfSource {
   weasel::UIStyle& _style;
   std::wstring _current_schema_zhung_icon;
   std::wstring _current_schema_ascii_icon;
+  weasel::LanguageBarThemeObserver _theme_observer;
 };

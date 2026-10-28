@@ -65,10 +65,25 @@ CLangBarItemButton::CLangBarItemButton(com_ptr<WeaselTSF> pTextService,
   _pTextService = pTextService;
   _guid = guid;
   ascii_mode = false;
+  _theme_observer.Start(g_hInst, OnSystemAppearanceChanged, this);
 }
 
 CLangBarItemButton::~CLangBarItemButton() {
+  _theme_observer.Stop();
   DllRelease();
+}
+
+void CLangBarItemButton::OnSystemAppearanceChanged(void* context) {
+  auto* button = static_cast<CLangBarItemButton*>(context);
+  // Keep both the owner and sink alive if OnUpdate reenters TSF and unadvises
+  // the sink or releases the language bar button.
+  button->AddRef();
+  {
+    com_ptr<ITfLangBarItemSink> sink = button->_pLangBarItemSink;
+    if (sink)
+      sink->OnUpdate(TF_LBI_ICON);
+  }
+  button->Release();
 }
 
 STDAPI CLangBarItemButton::QueryInterface(REFIID riid, void** ppvObject) {
@@ -201,7 +216,7 @@ STDAPI CLangBarItemButton::GetIcon(HICON* phIcon) {
   if (!phIcon)
     return E_INVALIDARG;
 
-  *phIcon = weasel::LoadLanguageBarIcon(
+  *phIcon = weasel::LoadThemedLanguageBarIcon(
       g_hInst, ascii_mode ? IDI_EN : IDI_ZH,
       ascii_mode ? _style.current_ascii_icon : _style.current_zhung_icon,
       weasel::GetLanguageBarIconSize());

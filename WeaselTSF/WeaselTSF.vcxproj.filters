@@ -107,6 +107,9 @@
     <ClInclude Include="LanguageBarIcon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LanguageBarThemeObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="DisplayAttributeInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>

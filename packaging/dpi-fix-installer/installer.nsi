@@ -33,16 +33,16 @@ SetCompressor /SOLID lzma
 SetOverwrite on
 ShowInstDetails show
 ShowUninstDetails show
-VIProductVersion "0.16.3.2"
+VIProductVersion "0.16.3.3"
 VIAddVersionKey /LANG=2052 "ProductName" "${PACKAGE_NAME}"
-VIAddVersionKey /LANG=2052 "FileDescription" "小狼毫离线安装程序（托盘 DPI 修复）"
-VIAddVersionKey /LANG=2052 "FileVersion" "0.16.3.2"
+VIAddVersionKey /LANG=2052 "FileDescription" "小狼毫离线安装程序（托盘清晰度与主题修复）"
+VIAddVersionKey /LANG=2052 "FileVersion" "0.16.3.3"
 VIAddVersionKey /LANG=2052 "LegalCopyright" "GPLv3; Rime Developers and contributors"
 VIAddVersionKey /LANG=2052 "Comments" "Custom build 2026-10-28; x64 Windows 10/11"
 
 !define MUI_ICON "${ICON_FILE}"
 !define MUI_ABORTWARNING
-!define MUI_WELCOMEPAGE_TEXT "本安装包包含完整的小狼毫输入法和托盘‘中/英’图标缩放修复，可离线安装。$\r$\n$\r$\n适用于 Intel/AMD 64 位 Windows 10/11，同时支持 32 位应用。$\r$\n$\r$\n若已安装小狼毫，请先从 Windows 设置中卸载旧版本，再运行本安装程序。卸载旧版时请保留个人词库与用户文件夹。"
+!define MUI_WELCOMEPAGE_TEXT "本安装包包含完整的小狼毫输入法和托盘‘中/英’图标修复，可离线安装。图标随任务栏主题切换：深色主题显示白字，浅色主题显示黑字。$\r$\n$\r$\n适用于 Intel/AMD 64 位 Windows 10/11，同时支持 32 位应用。$\r$\n$\r$\n若已安装小狼毫，请先从 Windows 设置中卸载旧版本，再运行本安装程序。卸载旧版时请保留个人词库与用户文件夹。"
 !define MUI_FINISHPAGE_TEXT "小狼毫已安装。按 Win+空格切换输入法。$\r$\n$\r$\n已打开的程序可能仍使用旧版输入法组件。请重新启动这些程序，或注销 Windows 后重新登录。$\r$\n$\r$\n本修复版默认关闭自动更新。"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\WeaselServer.exe"
 !define MUI_FINISHPAGE_RUN_TEXT "启动小狼毫"
@@ -119,10 +119,10 @@ Section "小狼毫输入法" InstallSection
 
   ; Install an uninstaller before registration so a partial install is removable.
   WriteINIStr "$INSTDIR\dpi-fix-package.ini" "Package" "Id" "${PACKAGE_ID}"
-  WriteINIStr "$INSTDIR\dpi-fix-package.ini" "Package" "Source" "https://github.com/gaoqiangks/weasel/commit/dfdcb7baebb3c395105eee3b2bc47ac18169369d"
+  WriteINIStr "$INSTDIR\dpi-fix-package.ini" "Package" "Source" "https://github.com/gaoqiangks/weasel/commit/d5b36f921337cfd6d63ab627ab6f2e1ff66a6395"
   WriteUninstaller "$INSTDIR\uninstall.exe"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayName" "${PACKAGE_NAME}"
-  WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayVersion" "0.16.3.2"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayVersion" "0.16.3.3"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayIcon" "$INSTDIR\WeaselServer.exe"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "UninstallString" '$\"$INSTDIR\uninstall.exe$\"'

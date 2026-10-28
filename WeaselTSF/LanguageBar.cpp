@@ -4,6 +4,7 @@
 #include <shellapi.h>
 #include "WeaselTSF.h"
 #include "LanguageBar.h"
+#include "LanguageBarIcon.h"
 #include "CandidateList.h"
 #include <WeaselUtility.h>
 
@@ -197,27 +198,13 @@ STDAPI CLangBarItemButton::OnMenuSelect(UINT wID) {
 }
 
 STDAPI CLangBarItemButton::GetIcon(HICON* phIcon) {
-  if (ascii_mode) {
-    if (_style.current_ascii_icon.empty())
-      *phIcon = (HICON)LoadImageW(g_hInst, MAKEINTRESOURCEW(IDI_EN), IMAGE_ICON,
-                                  GetSystemMetrics(SM_CXSMICON),
-                                  GetSystemMetrics(SM_CYSMICON), LR_SHARED);
-    else
-      *phIcon =
-          (HICON)LoadImageW(NULL, _style.current_ascii_icon.c_str(), IMAGE_ICON,
-                            GetSystemMetrics(SM_CXSMICON),
-                            GetSystemMetrics(SM_CYSMICON), LR_LOADFROMFILE);
-  } else {
-    if (_style.current_zhung_icon.empty())
-      *phIcon = (HICON)LoadImageW(g_hInst, MAKEINTRESOURCEW(IDI_ZH), IMAGE_ICON,
-                                  GetSystemMetrics(SM_CXSMICON),
-                                  GetSystemMetrics(SM_CYSMICON), LR_SHARED);
-    else
-      *phIcon =
-          (HICON)LoadImageW(NULL, _style.current_zhung_icon.c_str(), IMAGE_ICON,
-                            GetSystemMetrics(SM_CXSMICON),
-                            GetSystemMetrics(SM_CYSMICON), LR_LOADFROMFILE);
-  }
+  if (!phIcon)
+    return E_INVALIDARG;
+
+  *phIcon = weasel::LoadLanguageBarIcon(
+      g_hInst, ascii_mode ? IDI_EN : IDI_ZH,
+      ascii_mode ? _style.current_ascii_icon : _style.current_zhung_icon,
+      weasel::GetLanguageBarIconSize());
   return (*phIcon == NULL) ? E_FAIL : S_OK;
 }
 

@@ -1,0 +1,4 @@
+#include "../../include/resource.h"
+
+IDI_ZH ICON "../../resource/zh.ico"
+IDI_EN ICON "../../resource/en.ico"

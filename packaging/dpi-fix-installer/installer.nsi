@@ -5,6 +5,7 @@ Unicode true
 !include x64.nsh
 !include WinVer.nsh
 !include FileFunc.nsh
+!include preflight.nsh
 
 !ifndef PAYLOAD_DIR
   !error "Pass /DPAYLOAD_DIR with the reviewed application payload."
@@ -21,8 +22,8 @@ Unicode true
 !define PACKAGE_NAME "小狼毫 0.16.3 托盘图标修复版"
 !define UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\Weasel"
 !define RIME_KEY "Software\Rime\Weasel"
-!define CLSID_KEY "Software\Classes\CLSID\{A3F4CDED-B1E9-41EE-9CA6-7B4D0DE6CB0A}\InprocServer32"
 !define SHORTCUT_DIR "小狼毫输入法"
+Var CheckOnly
 
 Name "${PACKAGE_NAME}"
 OutFile "${OUTPUT_FILE}"
@@ -32,10 +33,10 @@ SetCompressor /SOLID lzma
 SetOverwrite on
 ShowInstDetails show
 ShowUninstDetails show
-VIProductVersion "0.16.3.1"
+VIProductVersion "0.16.3.2"
 VIAddVersionKey /LANG=2052 "ProductName" "${PACKAGE_NAME}"
 VIAddVersionKey /LANG=2052 "FileDescription" "小狼毫离线安装程序（托盘 DPI 修复）"
-VIAddVersionKey /LANG=2052 "FileVersion" "0.16.3.1"
+VIAddVersionKey /LANG=2052 "FileVersion" "0.16.3.2"
 VIAddVersionKey /LANG=2052 "LegalCopyright" "GPLv3; Rime Developers and contributors"
 VIAddVersionKey /LANG=2052 "Comments" "Custom build 2026-10-28; x64 Windows 10/11"
 
@@ -53,8 +54,16 @@ VIAddVersionKey /LANG=2052 "Comments" "Custom build 2026-10-28; x64 Windows 10/1
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_UNPAGE_FINISH
 !insertmacro MUI_LANGUAGE "SimpChinese"
+!insertmacro DefineWeaselPreflightFunctions
 
 Function .onInit
+  StrCpy $CheckOnly 0
+  ${GetParameters} $R1
+  ClearErrors
+  ${GetOptions} $R1 "/CHECKONLY" $R2
+  ${IfNot} ${Errors}
+    StrCpy $CheckOnly 1
+  ${EndIf}
   ${IfNot} ${AtLeastWin10}
     IfSilent +2
       MessageBox MB_OK|MB_ICONSTOP "本安装包需要 Windows 10 或 Windows 11。"
@@ -68,31 +77,35 @@ Function .onInit
     Quit
   ${EndIf}
 
-  ; Inspect both registry views before extracting or changing any program file.
+  ; An uninstaller may leave COM metadata after removing the actual program.
+  ; Only an existing runtime or uninstaller is evidence of an installed copy.
   SetRegView 32
-  ReadRegStr $0 HKLM "${RIME_KEY}" "WeaselRoot"
-  StrCmp $0 "" 0 existing_installation
-  ReadRegStr $0 HKLM "${UNINSTALL_KEY}" "UninstallString"
-  StrCmp $0 "" 0 existing_installation
-  ReadRegStr $0 HKLM "${CLSID_KEY}" ""
-  StrCmp $0 "" 0 existing_installation
+  !insertmacro FindExistingWeasel HKLM "${RIME_KEY}" "${UNINSTALL_KEY}"
+  StrCmp $R0 "" 0 existing_installation
   SetRegView 64
-  ReadRegStr $0 HKLM "${RIME_KEY}" "WeaselRoot"
-  StrCmp $0 "" 0 existing_installation
-  ReadRegStr $0 HKLM "${UNINSTALL_KEY}" "UninstallString"
-  StrCmp $0 "" 0 existing_installation
-  ReadRegStr $0 HKLM "${CLSID_KEY}" ""
-  StrCmp $0 "" 0 existing_installation
+  !insertmacro FindExistingWeasel HKLM "${RIME_KEY}" "${UNINSTALL_KEY}"
+  StrCmp $R0 "" 0 existing_installation
   SetRegView 32
   StrCpy $INSTDIR "$PROGRAMFILES64\Rime\weasel-0.16.3-dpi-fix"
-  IfFileExists "$INSTDIR\*.*" existing_installation ready
+  ${DirState} "$INSTDIR" $R0
+  StrCmp $R0 1 occupied_directory ready
 
 existing_installation:
   IfSilent +2
-    MessageBox MB_OK|MB_ICONINFORMATION "检测到已有的小狼毫安装或同名安装文件夹。$\r$\n$\r$\n请先通过 Windows‘设置 → 应用’卸载旧版小狼毫，再运行本安装包。卸载时保留个人用户文件夹；本程序不会覆盖或自动删除现有安装。"
+    MessageBox MB_OK|MB_ICONINFORMATION "检测到仍然存在的小狼毫程序：$\r$\n$R0$\r$\n$\r$\n请先通过 Windows‘设置 → 应用’卸载旧版，再运行本安装包。卸载时请保留个人用户文件夹。"
+  SetErrorLevel 1638
+  Quit
+occupied_directory:
+  IfSilent +2
+    MessageBox MB_OK|MB_ICONINFORMATION "安装目标文件夹中已有文件：$\r$\n$INSTDIR$\r$\n$\r$\n如果旧版已卸载，请先将此文件夹改名保留，再重试。个人词库和配置无需删除。"
   SetErrorLevel 1638
   Quit
 ready:
+  ${If} $CheckOnly == 1
+    ; Read-only diagnostic mode: do not enter the installation section.
+    SetErrorLevel 0
+    Quit
+  ${EndIf}
 FunctionEnd
 
 Section "小狼毫输入法" InstallSection
@@ -109,7 +122,7 @@ Section "小狼毫输入法" InstallSection
   WriteINIStr "$INSTDIR\dpi-fix-package.ini" "Package" "Source" "https://github.com/gaoqiangks/weasel/commit/dfdcb7baebb3c395105eee3b2bc47ac18169369d"
   WriteUninstaller "$INSTDIR\uninstall.exe"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayName" "${PACKAGE_NAME}"
-  WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayVersion" "0.16.3.1"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayVersion" "0.16.3.2"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayIcon" "$INSTDIR\WeaselServer.exe"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "UninstallString" '$\"$INSTDIR\uninstall.exe$\"'
